@@ -6,6 +6,6 @@ import (
 	"rsc.io/quote"
 )
 
-func demomain() {
+func main() {
 	fmt.Println(quote.Go())
 }
