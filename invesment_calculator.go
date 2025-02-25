@@ -5,25 +5,35 @@ import (
 	"math"
 )
 
-func main_inv_cal() {
+const inflationRate = 2.5
 
-	const inflationRate = 2.5
+func main() {
 
 	var invesmentAmount float64
 	expectedReturnRate := 5.5
 	var years float64 = 10
 
-	fmt.Print("Invesment Amount: ")
+	outputText("Invesment Amount: ")
 	fmt.Scan(&invesmentAmount)
-	fmt.Print("Expected Return rate: ")
+	outputText("Expected Return rate: ")
 	fmt.Scan(&expectedReturnRate)
-	fmt.Print("No of Years: ")
+	outputText("No of Years: ")
 	fmt.Scan(&years)
 
-	futureValue := invesmentAmount * math.Pow(1+expectedReturnRate/100, years)
-	futRealValue := futureValue / math.Pow(1+inflationRate/100, years)
+	futureValue, futRealValue := calculateFutureValue(invesmentAmount, expectedReturnRate, years)
 
-	fmt.Println(futureValue)
-	fmt.Println(futRealValue)
+	fmt.Printf("Future value: %.2f", futureValue)
+	fmt.Printf("Future value (adjusted for inflation): %.2f", futRealValue)
 
+}
+
+func outputText(text string) {
+	fmt.Print(text)
+}
+
+func calculateFutureValue(invesmentAmount, expectedReturnRate, years float64) (float64, float64) {
+	fv := invesmentAmount * math.Pow(1+expectedReturnRate/100, years)
+	rfv := fv / math.Pow(1+inflationRate/100, years)
+
+	return fv, rfv
 }

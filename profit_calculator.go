@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main_profit_cal() {
 
 	revenue := 0.0
 	expence := 0.0
