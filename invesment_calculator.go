@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-func main() {
+func main_inv_cal() {
 
 	const inflationRate = 2.5
 
